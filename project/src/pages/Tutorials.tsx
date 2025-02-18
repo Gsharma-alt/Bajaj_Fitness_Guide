@@ -4,7 +4,7 @@ const tutorials = [
   {
     id: 1,
     name: 'Squat',
-    video: '/assets/squat.mp4', // Replace with actual video path
+    video: '/assets/squat.gif.mp4', // Replace with actual video path
     steps: [
       'Stand with feet shoulder-width apart.',
       'Lower your body by bending your knees and pushing your hips back.',
@@ -16,7 +16,7 @@ const tutorials = [
   {
     id: 2,
     name: 'Push-Up',
-    video: '/assets/pushup.mp4', // Replace with actual video path
+    video: '/assets/pushup.gif.mp4', // Replace with actual video path
     steps: [
       'Start in a plank position with your hands shoulder-width apart.',
       'Lower your body until your chest nearly touches the floor.',
@@ -28,7 +28,7 @@ const tutorials = [
   {
     id: 3,
     name: 'Crunches',
-    video: '/assets/crunches.mp4', // Replace with actual video path
+    video: '/assets/crunches.gif.mp4', // Replace with actual video path
     steps: [
       'Lie down with knees bent, feet flat, and hands behind your head.',
       'Engage your core by pulling your belly button toward your spine.',
@@ -40,7 +40,7 @@ const tutorials = [
   {
     id: 4,
     name: 'Bicep Curls',
-    video: '/assets/bicepcurl.mp4', // Replace with actual video path
+    video: '/assets/bicepcurl.gif.mp4', // Replace with actual video path
     steps: [
       'Stand straight, hold dumbbells with palms facing forward.',
       'Curl the weights up to shoulder level, keeping elbows stationary.',
@@ -52,7 +52,7 @@ const tutorials = [
   {
     id: 4,
     name: 'Forward bend',
-    video: '/assets/forward.mp4', // Replace with actual video path
+    video: '/assets/forward.gif.mp4', // Replace with actual video path
     steps: [
       'Stand tall with feet hip-width apart and arms by your sides.',
       'Inhale and lengthen your spine.',

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Trophy, Award } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { useNavigate } from 'react-router-dom';
@@ -32,25 +32,16 @@ const challenges: ChallengeCard[] = [
     exercise: 'Squats',
     difficulty: 'Intermediate'
   },
+  
   {
     id: '3',
-    title: '100 Crunches Challenge',
-    description: 'Complete 100 crunches in one session',
-    points: 200,
-    target: 100,
-    exercise: 'Crunches',
-    difficulty: 'Advanced'
-  },
-  {
-    id: '4',
     title: '40 Bicep Curls Challenge',
     description: 'Complete 40 bicep curls in one session',
     points: 175,
     target: 40,
     exercise: 'Bicep Curls',
     difficulty: 'Intermediate'
-  }
-];
+  }];
 
 export function Challenges() {
   const joinChallenge = useStore((state) => state.joinChallenge);
@@ -58,8 +49,26 @@ export function Challenges() {
 
   const handleAcceptChallenge = (challenge: ChallengeCard) => {
     joinChallenge(challenge.id);
-    // Redirect to workout page with challenge context
-    navigate('/workout', { 
+    
+    let path = '/workout'; // Default path
+    
+    if (challenge.title === '30 Push-ups Challenge') {
+      path = '/30pushup';
+    } else if (challenge.title === '50 Squats Challenge') {
+      path = '/50squat';
+    }
+    else if (challenge.title === '40 Bicep Curls Challenge') {
+      path = '/40bicepcurls';
+    }
+    else if (challenge.title === '100 Crunches Challenge') {
+      path = '/100crunches';
+    }
+    
+    else if (challenge.title === '100 Bicep Curls Challenge') {
+      path = '/100bicepcurls';
+    }
+    
+    navigate(path, { 
       state: { 
         challengeMode: true,
         challenge: challenge 
@@ -81,7 +90,12 @@ export function Challenges() {
             <div key={challenge.id} className="bg-white rounded-lg shadow-lg border border-indigo-100 overflow-hidden">
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-semibold text-indigo-600">{challenge.title}</h3>
+                  <h3 
+                    className="text-xl font-semibold text-indigo-600 cursor-pointer"
+                    onClick={() => handleAcceptChallenge(challenge)}
+                  >
+                    {challenge.title}
+                  </h3>
                   <Trophy className="w-6 h-6 text-indigo-500" />
                 </div>
                 <p className="text-indigo-500 mb-4">{challenge.description}</p>

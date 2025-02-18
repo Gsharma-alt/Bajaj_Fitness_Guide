@@ -8,15 +8,17 @@ interface Store {
   setCurrentUser: (user: User) => void;
   addExerciseCount: (exerciseId: string, count: number) => void;
   joinChallenge: (challengeId: string) => void;
+  points: number;
+  addPoints: (value: number) => void;
 }
 
 const defaultExercises: Exercise[] = [
   {
     id: '1',
-    name: 'Side Stretch WarmUp',
+    name: 'Stretch WarmUp',
     count: 0,
     points: 12,
-    description: 'Start strecthing to the side',
+    description: 'Stand straight , raise your arms and bend foward to streatch your whole body',
     tutorial: 'https://www.youtube.com/watch?v=I2wQjK1cgYE'
   },
   {
@@ -59,13 +61,17 @@ export const useStore = create<Store>((set) => ({
   currentUser: null,
   exercises: defaultExercises,
   challenges: [],
+  points: 0, // Initialize points
+
   setCurrentUser: (user) => set({ currentUser: user }),
+
   addExerciseCount: (exerciseId, count) =>
     set((state) => ({
       exercises: state.exercises.map((ex) =>
         ex.id === exerciseId ? { ...ex, count: ex.count + count } : ex
       ),
     })),
+
   joinChallenge: (challengeId) =>
     set((state) => ({
       challenges: state.challenges.map((challenge) =>
@@ -76,5 +82,10 @@ export const useStore = create<Store>((set) => ({
             }
           : challenge
       ),
+    })),
+
+  addPoints: (value) =>
+    set((state) => ({
+      points: state.points + value, // Update brownie points
     })),
 }));

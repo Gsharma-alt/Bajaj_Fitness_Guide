@@ -4,6 +4,12 @@ export interface User {
   score: number;
   gender: string;
   avatar: string;
+  email:string;
+  profilePhoto:string;
+  age:number;
+  weight:number;
+  goal:number;
+  handles:string;
 }
 
 export interface Exercise {
@@ -23,4 +29,22 @@ export interface Challenge {
  
   exercise: string;
   participants: User[];
+}
+export interface Post {
+  id: string;
+  content: string;
+  likes: number;
+  date: string;
+  pinned: boolean;
+}
+
+export interface Community {
+  id: number;
+  name: string;
+  members: number;
+  category: string;
+  adminName: string;
+  description: string;
+  image: string;
+  posts: Post[];
 }

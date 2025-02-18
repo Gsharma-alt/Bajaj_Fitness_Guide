@@ -16,7 +16,7 @@ export default function FemaleHome() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 justify-center">
           <FeatureCard
             icon={<Calendar className="w-8 h-8" />}
             title="Cycle Tracking"
@@ -28,12 +28,6 @@ export default function FemaleHome() {
             title="Workout Library"
             description="Access workouts optimized for your current cycle phase"
             link="/workout"
-          />
-          <FeatureCard
-            icon={<Moon className="w-8 h-8" />}
-            title="Mood & Symptoms"
-            description="Log your daily wellness and get personalized tips"
-            link="/wellness"
           />
           <FeatureCard
             icon={<Moon className="w-8 h-8" />}

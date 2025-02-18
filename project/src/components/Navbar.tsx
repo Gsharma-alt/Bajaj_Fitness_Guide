@@ -20,14 +20,6 @@ export function Navbar() {
           
           <div className="flex items-center space-x-8">
             <Link 
-              to="/workout" 
-              className="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200 group"
-            >
-              <Dumbbell className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
-              <span className="font-medium">Workout</span>
-            </Link>
-            
-            <Link 
               to="/challenges" 
               className="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200 group"
             >
@@ -35,6 +27,14 @@ export function Navbar() {
               <span className="font-medium">Brownie Points</span>
             </Link>
             
+            <Link 
+              to="/tutorials" 
+              className="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200 group"
+            >
+              <Dumbbell className="w-5 h-5 text-black-600" />
+              <span className="font-medium">Tutorials</span>
+            </Link>
+
             <Link 
               to="/assistant" 
               className="flex items-center space-x-2 text-gray-600 hover:text-indigo-600 transition-colors duration-200 group"

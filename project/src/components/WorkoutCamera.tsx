@@ -10,7 +10,6 @@ export function WorkoutCamera({ selectedExercise }: WorkoutCameraProps) {
 
   useEffect(() => {
     const stopTracking = async () => {
-      // Stop tracking for the previous exercise
       if (videoFeedUrl) {
         try {
           const stopUrl = videoFeedUrl.replace("video_feed", "stop_tracking");
@@ -24,20 +23,43 @@ export function WorkoutCamera({ selectedExercise }: WorkoutCameraProps) {
 
     const startTracking = async () => {
       if (isStarted) {
-        // Determine the new video feed URL based on the selected exercise
         let newVideoFeedUrl = null;
-        if (selectedExercise.toLowerCase() === "bicep curls") {
-          newVideoFeedUrl = "http://localhost:5002/video_feed";
-        } else if (selectedExercise.toLowerCase() === "side stretch warmup") {
-          newVideoFeedUrl = "http://localhost:5005/video_feed";
-        } else if (selectedExercise.toLowerCase() === "crunches") {
-          newVideoFeedUrl = "http://localhost:5006/video_feed";
-        }
-        else if (selectedExercise.toLowerCase() === "squats") {
-          newVideoFeedUrl = "http://localhost:5004/video_feed";
-        }
-        else if (selectedExercise.toLowerCase() === "push-ups") {
-          newVideoFeedUrl = "http://localhost:5003/video_feed";
+        switch (selectedExercise.toLowerCase()) {
+          case "bicep curls":
+            newVideoFeedUrl = "http://localhost:5002/video_feed";
+            break;
+          case "side stretch warmup":
+            newVideoFeedUrl = "http://localhost:5005/video_feed";
+            break;
+          case "crunches":
+            newVideoFeedUrl = "http://localhost:5006/video_feed";
+            break;
+          case "squats":
+            newVideoFeedUrl = "http://localhost:5004/video_feed";
+            break;
+          case "push-ups":
+            newVideoFeedUrl = "http://localhost:5003/video_feed";
+            break;
+          case "100 bicep curls":
+            newVideoFeedUrl = "http://localhost:5002/video_feed";
+            break;
+            case "40 bicep curls":
+            newVideoFeedUrl = "http://localhost:5002/video_feed";
+            break;
+          case "100 crunches":
+            newVideoFeedUrl = "http://localhost:5006/video_feed";
+            break;
+          case "40 stretch":
+            newVideoFeedUrl = "http://localhost:5005/video_feed";
+            break;
+          case "50 squats":
+            newVideoFeedUrl = "http://localhost:5004/video_feed";
+            break;
+          case "30 pushups":
+            newVideoFeedUrl = "http://localhost:5003/video_feed";
+            break;
+          default:
+            break;
         }
 
         if (newVideoFeedUrl) {
@@ -49,10 +71,8 @@ export function WorkoutCamera({ selectedExercise }: WorkoutCameraProps) {
       }
     };
 
-    // Stop the previous tracking and start the new one
     stopTracking().then(startTracking);
 
-    // Cleanup function to stop tracking when the component unmounts
     return () => {
       stopTracking();
     };
@@ -63,7 +83,7 @@ export function WorkoutCamera({ selectedExercise }: WorkoutCameraProps) {
       <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-900">
         {isStarted && videoFeedUrl ? (
           <img
-            key={videoFeedUrl} // Use videoFeedUrl as the key to force re-render
+            key={videoFeedUrl}
             src={videoFeedUrl}
             alt={`${selectedExercise} Counter`}
             className="w-full h-full object-cover"

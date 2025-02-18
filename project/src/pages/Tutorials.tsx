@@ -4,7 +4,7 @@ const tutorials = [
   {
     id: 1,
     name: 'Squat',
-    image: '/images/squat.jpg', // Replace with actual image path
+    video: '/assets/squat.mp4', // Replace with actual video path
     steps: [
       'Stand with feet shoulder-width apart.',
       'Lower your body by bending your knees and pushing your hips back.',
@@ -16,42 +16,50 @@ const tutorials = [
   {
     id: 2,
     name: 'Push-Up',
-    image: '/images/pushup.jpg', // Replace with actual image path
+    video: '/assets/pushup.mp4', // Replace with actual video path
     steps: [
       'Start in a plank position with your hands shoulder-width apart.',
       'Lower your body until your chest nearly touches the floor.',
       'Keep your elbows at a 45-degree angle.',
       'Push back up to the starting position.',
       'Repeat while maintaining a straight body.'
-    ],
-    imgStyle: { width: '150px', height: '200px' }
+    ]
   },
   {
     id: 3,
-    name: 'Lunges',
-    image: '/images/crunches.jpg', // Replace with actual image path
+    name: 'Crunches',
+    video: '/assets/crunches.mp4', // Replace with actual video path
     steps: [
-      'Stand tall with feet together.',
-      'Step forward with one leg and lower your hips until both knees are bent at a 90-degree angle.',
-      'Keep your front knee aligned with your ankle.',
-      'Push back up to the starting position.',
-      'Alternate legs and repeat.'
-    ],
-    imgStyle: { width: '150px', height: '200px' }
+      'Lie down with knees bent, feet flat, and hands behind your head.',
+      'Engage your core by pulling your belly button toward your spine.',
+      'Lift your upper body towards your knees, exhaling as you crunch.',
+      'Pause at the top and squeeze your core.',
+      'Lower slowly back to the start, inhaling as you go down.'
+    ]
   },
   {
     id: 4,
     name: 'Bicep Curls',
-    image: '/images/crunches.jpg', // Replace with actual image path
+    video: '/assets/bicepcurl.mp4', // Replace with actual video path
     steps: [
       'Stand straight, hold dumbbells with palms facing forward.',
       'Curl the weights up to shoulder level, keeping elbows stationary.',
-      ' Lower the dumbbells slowly to the starting position',
+      'Lower the dumbbells slowly to the starting position.',
       'Maintain control and avoid dropping the weights too fast.',
       'Repeat for 10-15 reps with controlled movement.'
-      
-    ],
-    imgStyle: { width: '150px', height: '200px' }
+    ]
+  },
+  {
+    id: 4,
+    name: 'Forward bend',
+    video: '/assets/forward.mp4', // Replace with actual video path
+    steps: [
+      'Stand tall with feet hip-width apart and arms by your sides.',
+      'Inhale and lengthen your spine.',
+      'Exhale and hinge forward at your hips, keeping your back straight.',
+      'Reach your hands toward the floor or your feet, allowing your head and neck to relax',
+      'Hold the position, breathing deeply, then slowly rise back to standing.'
+    ]
   }
 ];
 
@@ -62,7 +70,14 @@ export function Tutorials() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tutorials.map((tutorial) => (
           <div key={tutorial.id} className="bg-white p-6 shadow-lg rounded-lg">
-            <img src={tutorial.image} alt={tutorial.name} className="w-full h-48 object-cover rounded-md mb-4" />
+            {/* Replaced <img> with <video> */}
+            <video 
+              src={tutorial.video} 
+              style={{ width: "400px", height: "300px", borderRadius: "10px" }}
+              autoPlay 
+              loop 
+              muted
+            />
             <h2 className="text-xl font-semibold mb-2">{tutorial.name}</h2>
             <ul className="list-disc list-inside text-gray-600">
               {tutorial.steps.map((step, index) => (

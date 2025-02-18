@@ -1,4 +1,4 @@
-# FIT-IT-out README
+# FLEX-IT-OUT README
 
 ## Project Overview
 This is a **Fitness Website** designed to provide users with resources and tools to track their health and fitness goals. The website offers information on diet plans, workout routines, and wellness tips. It is built with a focus on user experience, responsiveness, and modern web technologies.

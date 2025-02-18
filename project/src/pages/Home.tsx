@@ -118,14 +118,14 @@ function Home() {
               transition={{ type: 'spring', stiffness: 300 }}
             >
               <ul>
-                <li className="border-b border-white last:border-b-0">
+                <li className="border-b border-white last:border-b-0 pl-3">
                   <button onClick={() => navigate('/redeem')} className="block py-2 text-gray-500 hover:text-gray-800">Redeem Brownie Points</button>
                 </li>
-                <li className="border-b border-white last:border-b-0">
+                <li className="border-b border-white last:border-b-0 pl-3">
                   <button onClick={() => navigate('/join')} className="block py-2 text-gray-500 hover:text-gray-800">Join Community</button>
                 </li>
                 <li>
-                  <button onClick={() => navigate('/about')} className="block py-2 text-gray-500 hover:text-gray-800">About Us</button>
+                  <button onClick={() => navigate('/about')} className="block py-2 text-gray-500 hover:text-gray-800 pl-3">About Us</button>
                 </li>
               </ul>
             </motion.div>

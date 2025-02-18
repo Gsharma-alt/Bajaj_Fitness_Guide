@@ -73,12 +73,9 @@ def generate_frames():
                     movement_complete = True  # Mark rep as counted
 
             # Display push-up count
-            cv2.putText(image, f"Push-Ups: {pushup_counter}", (20, 50),
+            cv2.putText(image, f"Push-Ups: {pushup_counter}", (20, 100),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-            # Display warning message
-            if warning_message:
-                cv2.putText(image, warning_message, (20, 100),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            
             
             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
         

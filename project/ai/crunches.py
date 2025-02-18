@@ -66,10 +66,8 @@ def generate_frames():
             # Display crunch count
             cv2.putText(image, f"Crunches: {crunch_counter}", (25, 100),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-            # Display warning message
-            if warning_message:
-                cv2.putText(image, warning_message, (20, 100),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            
+            
             
             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
         

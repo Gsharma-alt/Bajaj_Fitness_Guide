@@ -29,7 +29,7 @@ const sampleCommunities: Community[] = [
     category: "Running",
     adminName: "Sarah Johnson",
     description: "Join fellow marathon enthusiasts in training and preparation for upcoming events.",
-    image: "/api/placeholder/400/200",
+    image: "/assets/marathon.jpg",
     posts: [
       {
         id: "1",
@@ -54,7 +54,7 @@ const sampleCommunities: Community[] = [
     category: "HIIT",
     adminName: "Mike Chen",
     description: "High-intensity interval training community focused on maximum results.",
-    image: "/api/placeholder/400/200",
+    image: "/assets/HIIT.jpg",
     posts: [
       {
         id: "1",
@@ -72,7 +72,7 @@ const sampleCommunities: Community[] = [
     category: "Yoga",
     adminName: "Emma Patel",
     description: "Find your inner balance with daily yoga practices, meditation sessions, and mindful movement.",
-    image: "/api/placeholder/400/200",
+    image: "/assets/zen.jpg",
     posts: [
       {
         id: "1",
@@ -97,7 +97,7 @@ const sampleCommunities: Community[] = [
     category: "Strength Training",
     adminName: "Alex Strong",
     description: "Serious about strength? Join fellow powerlifters in technique discussions and training programs.",
-    image: "/api/placeholder/400/200",
+    image: "/assets/powerlift.jpg",
     posts: [
       {
         id: "1",
@@ -145,7 +145,7 @@ const CommunityCard: React.FC<CommunityCardProps> = ({
         <img 
           src={community.image} 
           alt={community.name}
-          className="w-full h-32 object-cover"
+          className="w-full h-18 object-cover"
         />
         <div className="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full">
           <div className="flex items-center text-gray-600 text-sm">

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { motion } from "framer-motion";
+import { Heart, Activity, Sun } from "lucide-react";
 
 export default function PeriodTracker() {
   const [startDate, setStartDate] = useState<Date | null>(null);
@@ -8,7 +10,6 @@ export default function PeriodTracker() {
   const [painTips, setPainTips] = useState<string[]>([]);
   const [exerciseTips, setExerciseTips] = useState<string[]>([]);
 
-  // List of tips
   const painReliefTips = [
     "Apply a heating pad to ease cramps.",
     "Drink chamomile or ginger tea for relief.",
@@ -27,13 +28,11 @@ export default function PeriodTracker() {
     "Try swimming—it helps with cramps and bloating.",
   ];
 
-  // Function to pick random tips
   const getRandomTips = (tips: string[], count: number) => {
     const shuffled = [...tips].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
   };
 
-  // Handle date changes
   const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const date = new Date(e.target.value);
     setStartDate(date);
@@ -48,76 +47,172 @@ export default function PeriodTracker() {
     setExerciseTips(getRandomTips(exerciseReliefTips, 3));
   };
 
-  // Highlight period days
   const tileClassName = ({ date }: { date: Date }) => {
     if (startDate && endDate && date >= startDate && date <= endDate) {
-      return "bg-pink-300 text-white rounded-lg";
+      return "period-day";
     }
     return "";
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-white py-10">
-      <h1 className="text-2xl font-bold text-pink-600 mb-6">Period Tracker</h1>
-
-      {/* Calendar */}
-      <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-        <Calendar tileClassName={tileClassName} />
-      </div>
-
-      {/* Date Input Fields */}
-      <div className="flex gap-4 mb-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Start Date
-          </label>
-          <input
-            type="date"
-            className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
-            onChange={handleStartDateChange}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            End Date
-          </label>
-          <input
-            type="date"
-            className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
-            onChange={handleEndDateChange}
-          />
-        </div>
-      </div>
-
-      {/* Tips Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        {/* Pain Relief Tips */}
-        <div className="bg-pink-100 p-4 rounded-lg shadow-md">
-          <h2 className="text-lg font-semibold text-pink-600 mb-2">
-            Pain Relief Tips
-          </h2>
-          <ul className="list-disc list-inside text-gray-700">
-            {painTips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
+    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white py-12 px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl mx-auto"
+      >
+        <div className="text-center mb-12">
+          <motion.h1 
+            className="text-3xl md:text-4xl font-bold text-pink-600 mb-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Period Tracker
+          </motion.h1>
+          <p className="text-gray-600">Track your cycle and get personalized tips</p>
         </div>
 
-        {/* Exercise Tips */}
-        <div className="bg-blue-100 p-4 rounded-lg shadow-md">
-          <h2 className="text-lg font-semibold text-blue-600 mb-2">
-            Exercise Tips
-          </h2>
-          <ul className="list-disc list-inside text-gray-700">
-            {exerciseTips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left Column - Calendar Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+            <div className="bg-white rounded-2xl shadow-xl p-6 overflow-hidden">
+              <Calendar 
+                tileClassName={tileClassName}
+                className="border-none shadow-none w-full"
+              />
+            </div>
 
-      {/* Encouraging Message */}
-      <p className="text-lg font-bold text-gray-600">Relax, it's gonna end soon! 💖</p>
+            <div className="bg-white rounded-2xl shadow-lg p-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Start Date
+                  </label>
+                  <input
+                    type="date"
+                    className="w-full px-4 py-2 rounded-lg border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+                    onChange={handleStartDateChange}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    End Date
+                  </label>
+                  <input
+                    type="date"
+                    className="w-full px-4 py-2 rounded-lg border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+                    onChange={handleEndDateChange}
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Tips Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+            <motion.div 
+              className="bg-gradient-to-r from-pink-100 to-pink-50 p-6 rounded-2xl shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <Heart className="w-6 h-6 text-pink-500" />
+                <h2 className="text-xl font-semibold text-pink-600">Pain Relief Tips</h2>
+              </div>
+              <ul className="space-y-3">
+                {painTips.map((tip, index) => (
+                  <motion.li 
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-2 text-gray-700"
+                  >
+                    <span className="w-6 h-6 rounded-full bg-pink-200 flex items-center justify-center text-sm font-medium text-pink-600 flex-shrink-0">
+                      {index + 1}
+                    </span>
+                    {tip}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              className="bg-gradient-to-r from-blue-100 to-blue-50 p-6 rounded-2xl shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <Activity className="w-6 h-6 text-blue-500" />
+                <h2 className="text-xl font-semibold text-blue-600">Exercise Tips</h2>
+              </div>
+              <ul className="space-y-3">
+                {exerciseTips.map((tip, index) => (
+                  <motion.li 
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-2 text-gray-700"
+                  >
+                    <span className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-sm font-medium text-blue-600 flex-shrink-0">
+                      {index + 1}
+                    </span>
+                    {tip}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          className="text-center mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="inline-block bg-white px-6 py-3 rounded-full shadow-lg">
+            <div className="flex items-center gap-2">
+              <Sun className="w-5 h-5 text-yellow-500" />
+              <p className="text-lg font-medium text-gray-700">
+                Stay strong, this too shall pass! 💖
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      <style jsx>{`
+        .period-day {
+          background: linear-gradient(135deg, #f9a8d4 0%, #f472b6 100%);
+          color: white;
+          border-radius: 8px;
+        }
+        
+        .react-calendar {
+          border: none;
+          width: 100%;
+        }
+        
+        .react-calendar__tile {
+          padding: 1em 0.5em;
+          transition: all 0.2s;
+        }
+        
+        .react-calendar__tile:hover {
+          background-color: #fce7f3;
+          border-radius: 8px;
+        }
+      `}</style>
     </div>
   );
 }

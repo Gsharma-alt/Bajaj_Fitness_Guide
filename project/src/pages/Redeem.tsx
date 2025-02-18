@@ -10,10 +10,9 @@ const RewardCard = ({ title, points, description, image, isLocked, onRedeem }) =
       className={`bg-white rounded-xl shadow-lg overflow-hidden ${isLocked ? 'opacity-75' : ''}`}
     >
       <div className="relative">
-        <img 
-          src={`/api/placeholder/400/200`} 
-          alt={title}
-          className="w-full h-48 object-cover"
+        <div
+          className="w-full h-48 bg-cover bg-center"
+          style={{ backgroundImage: `url(${image})` }}
         />
         <div className="absolute top-4 right-4 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
           {points} Points
@@ -50,6 +49,7 @@ const Redeem = () => {
       id: 1,
       title: "Premium Membership",
       points: 1000,
+      image: "/assets/memb.png",
       description: "1 month of premium membership with access to exclusive workouts and features.",
       icon: FaCrown,
     },
@@ -57,6 +57,7 @@ const Redeem = () => {
       id: 2,
       title: "Personal Training Session",
       points: 800,
+      image: "/assets/personal.jpg",
       description: "60-minute one-on-one session with a certified personal trainer.",
       icon: FaDumbbell,
     },
@@ -64,6 +65,7 @@ const Redeem = () => {
       id: 3,
       title: "Health Supplements",
       points: 500,
+      image: "/assets/health.webp",
       description: "Premium protein shake and vitamins package from our partner stores.",
       icon: FaHeart,
     },
@@ -71,6 +73,7 @@ const Redeem = () => {
       id: 4,
       title: "Fitness Gear Discount",
       points: 300,
+      image: "/assets/gear.avif",
       description: "25% off on selected fitness equipment and accessories.",
       icon: FaGift,
     }

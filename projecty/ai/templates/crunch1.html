@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        img {
+            border: 5px solid #333;
+            margin-top: 20px;
+            width: 640px;
+            height: 480px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .start {
+            background-color: green;
+            color: white;
+        }
+        .stop {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <img src="{{ url_for('video_feed') }}" alt="Counter">
+    <br>
+    <button class="stop" onclick="stopTracking()">Stop Tracking</button>
+
+    <script>
+        function stopTracking() {
+            fetch('/stop_tracking')
+                .then(response => response.text())
+                .then(data => alert(data));
+        }
+    </script>
+</body>
+</html>
